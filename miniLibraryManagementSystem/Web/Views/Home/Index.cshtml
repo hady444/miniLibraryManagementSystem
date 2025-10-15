@@ -1,8 +1,90 @@
 ﻿@{
+
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-fluid">
+    <!-- Welcome Header -->
+    <div class="jumbotron text-center bg-light p-5 rounded shadow-sm mb-4">
+        <h1 class="display-4">Welcome to Library Management System</h1>
+        <p class="lead">Manage books, authors, and borrow transactions</p>
+        <hr class="my-4">
+        <a class="btn btn-primary btn-lg me-2" >View Books</a>
+        <a class="btn btn-success btn-lg" >View Authors</a>
+        <a class="btn btn-warning btn-lg me-2" >View Borrow Transactions</a>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="row mb-4" >
+        <div class="col-md-3 mb-3">
+            <div class="card text-white bg-primary shadow-sm h-100">
+                <div class="card-body" style="text-align:center">
+                    <h5 class="card-title">Total Books</h5>
+                    <p class="card-text fs-3">Model.TotalBooks</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card text-white bg-success shadow-sm h-100">
+                <div class="card-body" style="text-align:center">
+                    <h5 class="card-title">Total Authors</h5>
+                    <p class="card-text fs-3">Model.TotalAuthors</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card text-white bg-warning shadow-sm h-100">
+                <div class="card-body" style="text-align:center">
+                    <h5 class="card-title">Borrowed Books</h5>
+                    <p class="card-text fs-3">Model.BorrowedBooks</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-3">
+            <div class="card text-white bg-danger shadow-sm h-100">
+                <div class="card-body" style="text-align:center">
+                    <h5 class="card-title">Available Books</h5>
+                    <p class="card-text fs-3">Model.AvailableBooks</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Actions -->
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-book fs-1 mb-3"></i>
+                    <h5 class="card-title">Add New Book</h5>
+                    <p class="card-text">Add new books to the library inventory.</p>
+                    <a class="btn btn-primary" >Add Book</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-person fs-1 mb-3"></i>
+                    <h5 class="card-title">Add New Author</h5>
+                    <p class="card-text">Add author information to manage authors</p>
+                    <a class="btn btn-success" >Add Author</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <i class="bi bi-journal-check fs-1 mb-3"></i>
+                    <h5 class="card-title">Borrow Books</h5>
+                    <p class="card-text">Track borrowed books and manage returns easily.</p>
+                    <a class="btn btn-warning" >Borrow Book</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.js"></script>
+}

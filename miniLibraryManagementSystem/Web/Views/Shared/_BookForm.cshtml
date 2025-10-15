@@ -35,13 +35,17 @@
             <span asp-validation-for="Genre" class="text-danger"></span>
         </div>
 
-        @if (ViewBag.IsBorrowed != null)
-        {
-            <input type="hidden" name="IsBorrowed" value="@ViewBag.IsBorrowed" />
-        }
+        <div class="col-md-6 mt-3">
+            <div class="form-check mt-4">
+                <input class="form-check-input" asp-for="IsBorrowed" id="borrowCheck" />
+                <label class="form-check-label fw-bold" for="borrowCheck">
+                    @Html.DisplayNameFor(model => model.IsBorrowed)
+                </label>
+            </div>
+        </div>
 
         <div class="col-12 d-flex justify-content-between mt-4">
-            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">@ViewBag.goTo</a>
+            <a asp-controller="@ViewBag.controller" asp-action="Index" class="btn btn-outline-secondary">@ViewBag.goTo</a>
             <button type="submit" class="btn btn-success">@ViewBag.ButtonText</button>
         </div>
     </form>

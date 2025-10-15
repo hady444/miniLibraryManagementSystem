@@ -1,0 +1,65 @@
+﻿@model IEnumerable<miniLibraryManagementSystem.Domain.Models.BorrowTransaction>
+@{
+    ViewData["Title"] = "Borrow Transactions";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-3 text-center">Borrow Transactions</h2>
+
+    <div class="text-center mb-4">
+        <a asp-action="Index" asp-route-filter="all" class="btn btn-outline-secondary @(ViewBag.Filter == "all" ? "active" : "")">All</a>
+        <a asp-action="Index" asp-route-filter="active" class="btn btn-outline-success @(ViewBag.Filter == "active" ? "active" : "")">Active</a>
+        <a asp-action="Index" asp-route-filter="returned" class="btn btn-outline-info @(ViewBag.Filter == "returned" ? "active" : "")">Returned</a>
+    </div>
+
+    <table class="table table-striped table-bordered align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th>Book Title</th>
+                <th>Borrowed Date</th>
+                <th>Returned Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.BookName</td>
+                        <td>@item.BorrowedDate.ToString("yyyy-MM-dd")</td>
+                        <td>@(item.ReturnedDate?.ToString("yyyy-MM-dd") ?? "-")</td>
+                        <td>
+                            @if (item.ReturnedDate == null)
+                            {
+                                <span class="badge bg-success">Borrowed</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-secondary">Returned</span>
+                            }
+                        </td>
+                        <td>
+                            @if (item.ReturnedDate == null)
+                            {
+                                <a asp-action="Return" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Return</a>
+                            }
+                            else
+                            {
+                                <span class="text-muted">N/A</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No transactions found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

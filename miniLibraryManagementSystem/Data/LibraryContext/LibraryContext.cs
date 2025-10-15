@@ -15,6 +15,12 @@ namespace miniLibraryManagementSystem.Data.LibraryContext
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Author>()
             .HasIndex(a => a.Email).IsUnique();   // Prevent two authors from having same email
+
+            modelBuilder.Entity<Book>()
+            .HasOne(b => b.CurrentBorrow)
+            .WithOne(t => t.Book)
+            .HasForeignKey<BorrowTransaction>(t => t.BookId)
+            .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }

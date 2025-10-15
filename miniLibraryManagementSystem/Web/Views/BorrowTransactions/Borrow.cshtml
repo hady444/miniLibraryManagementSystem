@@ -1,0 +1,70 @@
+﻿@model miniLibraryManagementSystem.Web.ViewModels.BorrowBookViewModel
+
+@{
+    ViewData["Title"] = "Borrow Book";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Borrow a Book</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Borrow" method="post" class="row g-3">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <!-- Dropdown for selecting book -->
+                <div class="col-md-6">
+                    <label asp-for="BookId" class="form-label fw-bold">Select Book</label>
+                    <select asp-for="BookId" class="form-select" asp-items="Model.Books" id="bookSelect">
+                        <option value="">-- Select a Book --</option>
+                    </select>
+                    <span asp-validation-for="BookId" class="text-danger"></span>
+                </div>
+
+                <!-- Dynamic availability display -->
+                <div class="col-md-6">
+                    <label class="form-label fw-bold">Availability Status</label>
+                    <input type="text" id="availabilityStatus" class="form-control" readonly value="Select a book" />
+                </div>
+
+                <!-- Buttons -->
+                <div class="col-12 d-flex justify-content-between mt-3">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">Go to Home</a>
+                    <button type="submit" id="borrowButton" class="btn btn-success" disabled>Borrow Book</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#bookSelect').change(function () {
+                var bookId = $(this).val();
+                if (bookId) {
+                    $.get('@Url.Action("CheckAvailability", "BorrowTransactions")', { bookId: bookId })
+                        .done(function (data) {
+                            $('#availabilityStatus').val(data.message);
+
+                            if (data.available) {
+                                $('#availabilityStatus').removeClass('text-danger').addClass('text-success');
+                                $('#borrowButton').prop('disabled', false);
+                            } else {
+                                $('#availabilityStatus').removeClass('text-success').addClass('text-danger');
+                                $('#borrowButton').prop('disabled', true);
+                            }
+                        })
+                        .fail(function () {
+                            $('#availabilityStatus').val('Error checking availability');
+                            $('#borrowButton').prop('disabled', true);
+                        });
+                } else {
+                    $('#availabilityStatus').val('');
+                    $('#borrowButton').prop('disabled', true);
+                }
+            });
+        });
+    </script>
+}

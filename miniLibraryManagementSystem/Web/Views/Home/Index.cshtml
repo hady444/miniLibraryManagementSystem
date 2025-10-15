@@ -10,7 +10,7 @@
         <hr class="my-4">
         <a class="btn btn-primary btn-lg me-2" asp-controller="Books" asp-action="Index">View Books</a>
         <a class="btn btn-success btn-lg" asp-controller="Authors" asp-action="Index">View Authors</a>
-        <a class="btn btn-warning btn-lg me-2" >View Borrow Transactions</a>
+        <a class="btn btn-warning btn-lg me-2" asp-controller="BorrowTransactions" asp-action="Index">View Borrow Transactions</a>
     </div>
 
     <!-- Quick Stats -->
@@ -77,7 +77,7 @@
                     <i class="bi bi-journal-check fs-1 mb-3"></i>
                     <h5 class="card-title">Borrow Books</h5>
                     <p class="card-text">Track borrowed books and manage returns easily.</p>
-                    <a class="btn btn-warning" >Borrow Book</a>
+                    <a class="btn btn-warning" asp-controller="BorrowTransactions" asp-action="Borrow">Borrow Book</a>
                 </div>
             </div>
         </div>

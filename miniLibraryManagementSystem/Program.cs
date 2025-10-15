@@ -24,6 +24,7 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IBorrowingService, BorrowingService>();
 
 var app = builder.Build();
 

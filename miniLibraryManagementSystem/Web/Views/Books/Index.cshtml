@@ -1,4 +1,4 @@
-﻿@model IEnumerable<miniLibraryManagementSystem.Domain.Models.Book>
+﻿@model miniLibraryManagementSystem.Domain.Models.PagedResult<miniLibraryManagementSystem.Domain.Models.Book>
 
 @{
     ViewData["Title"] = "Books";
@@ -12,15 +12,15 @@
         <table class="table table-striped table-hover align-middle">
             <thead class="table-dark">
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Title)</th>
-                    <th>@Html.DisplayNameFor(model => model.Description)</th>
-                    <th>@Html.DisplayNameFor(model => model.Author)</th>
-                    <th>@Html.DisplayNameFor(model => model.IsBorrowed)</th>
+                    <th>@Html.DisplayNameFor(model => model.Items.First().Title)</th>
+                    <th>@Html.DisplayNameFor(model => model.Items.First().Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.Items.First().Author)</th>
+                    <th>@Html.DisplayNameFor(model => model.Items.First().IsBorrowed)</th>
                     <th class="text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Items)
                 {
                     <tr>
                         <td>@Html.DisplayFor(modelItem => item.Title)</td>
@@ -45,5 +45,6 @@
                 }
             </tbody>
         </table>
+        <partial name="_Pagination" model="Model" />
     </div>
 </div>

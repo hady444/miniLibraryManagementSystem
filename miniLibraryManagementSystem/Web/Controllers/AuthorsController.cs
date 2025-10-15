@@ -16,9 +16,10 @@ namespace miniLibraryManagementSystem.Web.Controllers
         }
 
         // GET: /Author
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 10)
         {
-            var authors = await _authorService.GetAllAsync();
+            //var authors = await _bookService.GetAllBooksAsync(pageNumber, pageSize);            var authors = await _authorService.GetAllPagedAsync(pageNumber, pageSize);
+            var authors = await _authorService.GetAllPagedAsync(pageNumber, pageSize);
             return View(authors);
         }
 

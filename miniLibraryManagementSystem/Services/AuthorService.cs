@@ -1,6 +1,7 @@
 ﻿using miniLibraryManagementSystem.Data.LibraryContext;
 using miniLibraryManagementSystem.Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using miniLibraryManagementSystem.Extensions;
 
 namespace miniLibraryManagementSystem.Services
 {
@@ -11,7 +12,14 @@ namespace miniLibraryManagementSystem.Services
 
 
         public async Task<IEnumerable<Author>> GetAllAsync() => await _ctx.Authors.Include(a => a.Books).ToListAsync();
+        public async Task<PagedResult<Author>> GetAllPagedAsync(int pageNumber = 1, int pageSize = 10)
+        {
+            var query = _ctx.Authors
+                .Include(a => a.Books)
+                .AsQueryable();
 
+            return await query.ToPagedResultAsync(pageNumber, pageSize);
+        }
 
         public async Task<Author> GetByIdAsync(int id) => await _ctx.Authors.Include(a => a.Books).FirstOrDefaultAsync(a => a.Id == id);
 

@@ -1,0 +1,28 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Author
+
+@{
+    ViewData["Title"] = "Create Author";
+
+    ViewBag.ActionName = "Create";
+    ViewBag.ButtonText = "Create Author";
+    ViewBag.ButtonColor = "success";
+
+    ViewBag.BackController = "Home";
+    ViewBag.BackAction = "Index";
+    ViewBag.BackText = "Go to Home";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center text-success">Add New Author</h2>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <partial name="_AuthorForm" model="Model" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,19 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Author
+
+@{
+    ViewData["Title"] = "Author Details";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-info mb-4">Author Details</h2>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <partial name="_AuthorPartial" model="Model" />
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+                <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

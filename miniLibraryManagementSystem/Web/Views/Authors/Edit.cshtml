@@ -1,0 +1,28 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Author
+
+@{
+    ViewData["Title"] = "Edit Author";
+
+    ViewBag.ActionName = "Edit";
+    ViewBag.ButtonText = "Save Changes";
+    ViewBag.ButtonColor = "primary";
+
+    ViewBag.BackController = "Authors";
+    ViewBag.BackAction = "Index";
+    ViewBag.BackText = "Back to List";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center text-primary">Edit Author</h2>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <partial name="_AuthorForm" model="Model" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

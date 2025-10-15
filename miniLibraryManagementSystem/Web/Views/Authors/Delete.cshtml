@@ -1,0 +1,26 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Author
+
+@{
+    ViewData["Title"] = "Delete Author";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-danger mb-4">Delete Author</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h4>Are you sure you want to delete this author?</h4>
+            <hr />
+
+            <partial name="_AuthorPartial" model="Model" />
+
+            <form asp-action="Delete" class="mt-4">
+                <input type="hidden" asp-for="Id" />
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

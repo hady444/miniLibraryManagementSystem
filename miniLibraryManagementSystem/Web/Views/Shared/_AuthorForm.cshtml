@@ -1,0 +1,48 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Author
+
+<form asp-action="@ViewBag.ActionName" class="row g-3" novalidate>
+    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+    @if (ViewBag.ActionName == "Edit")
+    {
+        <input type="hidden" asp-for="Id" />
+    }
+
+    <!-- Full Name -->
+    <div class="col-md-6">
+        <label asp-for="FullName" class="form-label fw-bold"></label>
+        <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
+        <span asp-validation-for="FullName" class="text-danger"></span>
+    </div>
+
+    <!-- Email -->
+    <div class="col-md-6">
+        <label asp-for="Email" class="form-label fw-bold"></label>
+        <input asp-for="Email" class="form-control" placeholder="Enter email address" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <!-- Website -->
+    <div class="col-md-6">
+        <label asp-for="Website" class="form-label fw-bold"></label>
+        <input asp-for="Website" class="form-control" placeholder="Enter website URL" />
+        <span asp-validation-for="Website" class="text-danger"></span>
+    </div>
+
+    <!-- Bio -->
+    <div class="col-12">
+        <label asp-for="Bio" class="form-label fw-bold"></label>
+        <textarea asp-for="Bio" class="form-control" rows="4" placeholder="Short biography"></textarea>
+        <span asp-validation-for="Bio" class="text-danger"></span>
+    </div>
+
+    <!-- Buttons -->
+    <div class="col-12 d-flex justify-content-between mt-4">
+        <a asp-controller="@ViewBag.BackController"
+           asp-action="@ViewBag.BackAction"
+           class="btn btn-outline-secondary">
+            @ViewBag.BackText
+        </a>
+        <button type="submit" class="btn btn-@ViewBag.ButtonColor">@ViewBag.ButtonText</button>
+    </div>
+</form>

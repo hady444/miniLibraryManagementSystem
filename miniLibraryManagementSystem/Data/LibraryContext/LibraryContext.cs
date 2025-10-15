@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using miniLibraryManagementSystem.Domain.Models;
 
-namespace Library_Management_System.Data.LibraryContext
+namespace miniLibraryManagementSystem.Data.LibraryContext
 {
     public class LibraryContext:DbContext
     {

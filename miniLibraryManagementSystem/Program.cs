@@ -1,24 +1,29 @@
-using Library_Management_System.Data.LibraryContext;
 using Microsoft.EntityFrameworkCore;
-
+using miniLibraryManagementSystem.Data.LibraryContext;
+using miniLibraryManagementSystem.Domain.Models;
+using miniLibraryManagementSystem.Services;
 var options = new WebApplicationOptions
 {
     ContentRootPath = Directory.GetCurrentDirectory(),
     WebRootPath = Path.Combine(Directory.GetCurrentDirectory(), "Web", "wwwroot") // absolute path
 };
 
+
+
 var builder = WebApplication.CreateBuilder(options);
-
-
+// Add services to the container.
 builder.Services.AddControllersWithViews()
     .AddRazorOptions(options =>
     {
         options.ViewLocationFormats.Add("/Web/Views/{1}/{0}.cshtml");
         options.ViewLocationFormats.Add("/Web/Views/Shared/{0}.cshtml");
     });
-
 builder.Services.AddDbContext<LibraryContext>(options =>
     options.UseInMemoryDatabase("mem"));
+
+
+
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 var app = builder.Build();
 

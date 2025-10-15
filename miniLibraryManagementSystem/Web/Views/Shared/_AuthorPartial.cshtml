@@ -1,0 +1,34 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Author
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label class="fw-bold">Full Name:</label>
+        <div class="form-control-plaintext">@Model.FullName</div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label class="fw-bold">Email:</label>
+        <div class="form-control-plaintext">@Model.Email</div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label class="fw-bold">Website:</label>
+        <div class="form-control-plaintext">
+            @if (!string.IsNullOrEmpty(Model.Website))
+            {
+                <a href="@Model.Website" target="_blank">@Model.Website</a>
+            }
+            else
+            {
+                <span class="text-muted">N/A</span>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-12 mb-3">
+        <label class="fw-bold">Bio:</label>
+        <div class="form-control-plaintext">
+            @(string.IsNullOrWhiteSpace(Model.Bio) ? "No biography provided." : Model.Bio)
+        </div>
+    </div>
+</div>

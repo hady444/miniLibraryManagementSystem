@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using miniLibraryManagementSystem.Data.LibraryContext;
-using miniLibraryManagementSystem.Domain.Models;
 using miniLibraryManagementSystem.Services;
 var options = new WebApplicationOptions
 {
@@ -24,6 +23,7 @@ builder.Services.AddDbContext<LibraryContext>(options =>
 
 
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 

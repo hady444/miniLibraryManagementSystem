@@ -1,0 +1,9 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Book
+@{
+    ViewData["Title"] = "Edit Book";
+    ViewBag.Heading = "Edit Book";
+    ViewBag.ActionName = "Edit";
+    ViewBag.ButtonText = "Save Changes";
+    ViewBag.goTo = "Back to list";
+}
+<partial name="_BookForm" model="Model" />

@@ -12,7 +12,9 @@ namespace miniLibraryManagementSystem.Data.LibraryContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Author>()
+            .HasIndex(a => a.Email).IsUnique();   // Prevent two authors from having same email
         }
     }
 }

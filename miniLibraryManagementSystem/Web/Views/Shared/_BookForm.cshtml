@@ -1,0 +1,49 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Book
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">@ViewBag.Heading</h2>
+    <div class="col-12 d-flex justify-content-between mt-4">
+    <form asp-action="@ViewBag.ActionName" class="row g-3" novalidate>
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+        <div class="col-md-6">
+            <label asp-for="Title" class="form-label fw-bold"></label>
+            <input asp-for="Title" class="form-control" placeholder="Enter book title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Description" class="form-label fw-bold"></label>
+            <input asp-for="Description" class="form-control" placeholder="Enter short description" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="AuthorId" class="form-label fw-bold">Author</label>
+            <select asp-for="AuthorId" class="form-select" asp-items="ViewBag.AuthorId">
+                <option value="">-- Select Author --</option>
+            </select>
+            <span asp-validation-for="AuthorId" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Genre" class="form-label fw-bold"></label>
+            <select asp-for="Genre" class="form-select"
+                    asp-items="Html.GetEnumSelectList<miniLibraryManagementSystem.Domain.Enums.Genre>()">
+                <option value="">-- Select Genre --</option>
+            </select>
+            <span asp-validation-for="Genre" class="text-danger"></span>
+        </div>
+
+        @if (ViewBag.IsBorrowed != null)
+        {
+            <input type="hidden" name="IsBorrowed" value="@ViewBag.IsBorrowed" />
+        }
+
+        <div class="col-12 d-flex justify-content-between mt-4">
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">@ViewBag.goTo</a>
+            <button type="submit" class="btn btn-success">@ViewBag.ButtonText</button>
+        </div>
+    </form>
+    </div>
+</div>

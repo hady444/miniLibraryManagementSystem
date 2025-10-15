@@ -1,0 +1,25 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Book
+
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center text-danger">Delete Book</h2>
+
+    <div class="card shadow-sm border-danger">
+        <div class="card-body">
+            <h4 class="text-center text-muted mb-4">Are you sure you want to delete this book?</h4>
+
+            <!-- Partial View -->
+            @await Html.PartialAsync("_BookDetailsPartial", Model)
+
+            <form asp-action="Delete" class="mt-4 d-flex justify-content-between align-items-center">
+                <input type="hidden" asp-for="Id" />
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+                <button type="submit" class="btn btn-danger">Delete Book</button>
+            </form>
+        </div>
+    </div>
+</div>
+

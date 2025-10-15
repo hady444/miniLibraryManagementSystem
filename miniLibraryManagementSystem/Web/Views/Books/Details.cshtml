@@ -1,0 +1,22 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Book
+
+@{
+    ViewData["Title"] = "Book Details";
+}
+
+<div class="container mt-5">
+    <h2 class="mb-4 text-center text-primary">Book Details</h2>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+
+            <!-- Partial View -->
+            @await Html.PartialAsync("_BookDetailsPartial", Model)
+
+            <div class="d-flex justify-content-between mt-4">
+                <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+                <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit Book</a>
+            </div>
+        </div>
+    </div>
+</div>

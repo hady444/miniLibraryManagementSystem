@@ -1,0 +1,9 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Book
+@{
+    ViewData["Title"] = "Create Book";
+    ViewBag.Heading = "Add New Book";
+    ViewBag.ActionName = "Create";
+    ViewBag.ButtonText = "Create Book";
+    ViewBag.goTo = "Go to Home";
+}
+<partial name="_BookForm" model="Model" />

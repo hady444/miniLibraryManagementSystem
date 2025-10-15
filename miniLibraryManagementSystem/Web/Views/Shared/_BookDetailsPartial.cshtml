@@ -1,0 +1,30 @@
+﻿@model miniLibraryManagementSystem.Domain.Models.Book
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label class="fw-bold">Title:</label>
+        <div class="form-control-plaintext">@Model.Title</div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label class="fw-bold">Description:</label>
+        <div class="form-control-plaintext">@Model.Description</div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label class="fw-bold">Author:</label>
+        <div class="form-control-plaintext">@Model.Author?.Email</div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label class="fw-bold">Genre:</label>
+        <div class="form-control-plaintext">@Model.Genre</div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label class="fw-bold">Is Borrowed:</label>
+        <div class="form-control-plaintext">
+            @(Model.IsBorrowed ? "Yes" : "No")
+        </div>
+    </div>
+</div>

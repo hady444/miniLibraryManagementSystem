@@ -1,4 +1,5 @@
 ﻿@{
+    @model miniLibraryManagementSystem.Web.ViewModels.HomeViewModel
     ViewData["Title"] = "Home Page";
 }
 
@@ -19,7 +20,7 @@
             <div class="card text-white bg-primary shadow-sm h-100">
                 <div class="card-body" style="text-align:center">
                     <h5 class="card-title">Total Books</h5>
-                    <p class="card-text fs-3">Model.TotalBooks</p>
+                    <p class="card-text fs-3">@Model.TotalBooks</p>
                 </div>
             </div>
         </div>
@@ -27,7 +28,7 @@
             <div class="card text-white bg-success shadow-sm h-100">
                 <div class="card-body" style="text-align:center">
                     <h5 class="card-title">Total Authors</h5>
-                    <p class="card-text fs-3">Model.TotalAuthors</p>
+                    <p class="card-text fs-3">@Model.TotalAuthors</p>
                 </div>
             </div>
         </div>
@@ -35,7 +36,7 @@
             <div class="card text-white bg-warning shadow-sm h-100">
                 <div class="card-body" style="text-align:center">
                     <h5 class="card-title">Borrowed Books</h5>
-                    <p class="card-text fs-3">Model.BorrowedBooks</p>
+                    <p class="card-text fs-3">@Model.BorrowedBooks</p>
                 </div>
             </div>
         </div>
@@ -43,7 +44,7 @@
             <div class="card text-white bg-danger shadow-sm h-100">
                 <div class="card-body" style="text-align:center">
                     <h5 class="card-title">Available Books</h5>
-                    <p class="card-text fs-3">Model.AvailableBooks</p>
+                    <p class="card-text fs-3">@Model.AvailableBooks</p>
                 </div>
             </div>
         </div>
